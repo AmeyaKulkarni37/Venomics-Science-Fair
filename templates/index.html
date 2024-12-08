@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venom Function Predictor</title>
+  </head>
+  <body>
+    <h1>Venom Function Prediction AI</h1>
+
+    <form action="{{url_for('predict')}}" method="post">
+      <input
+        type="text"
+        name="Input Sequence"
+        placeholder="Input a sequence here"
+        required="required"
+      />
+      <button type="submit">Predict</button>
+    </form>
+
+    <ul>
+      {% for prediction in predictions %}
+      <li>
+        Class: {{ prediction.class }} (Probability: {{ prediction.probability
+        }})
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

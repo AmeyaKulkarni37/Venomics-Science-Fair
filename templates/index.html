@@ -3,26 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
     <title>Venom Function Predictor</title>
   </head>
   <body>
     <h1>Venom Function Prediction AI</h1>
 
     <form action="{{url_for('predict')}}" method="post">
-      <input
-        type="text"
+      <textarea
         name="Input Sequence"
         placeholder="Input a sequence here"
         required="required"
-      />
+      ></textarea>
       <button type="submit">Predict</button>
     </form>
 
     <ul>
       {% for prediction in predictions %}
-      <li>
-        Class: {{ prediction.class }} (Probability: {{ prediction.probability
-        }})
+      <li class="pred">
+        Class: {{ prediction.class }} (Probability: {{ prediction.probability}})
       </li>
       {% endfor %}
     </ul>
